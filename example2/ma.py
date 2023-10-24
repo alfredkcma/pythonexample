@@ -19,7 +19,7 @@ def gen_signal(data, short, long):
                 price = float(line[5])
                 pricelist.append(price)
                 if len(pricelist) >= long:
-                    sma = sum(pricelist[-short:]) / short
-                    lma = sum(pricelist[-long:]) / long
+                    sma = short
+                    lma = long
                     csvw.writerow([line[0], line[5], sma, lma, int(sma >= lma)])
 
