@@ -8,7 +8,7 @@ with open("hsbclife.csv") as f:
     for i, line in enumerate(csvf):
         if i > 0:
             yearlist.append(int(line[0]))
-            cashflow = [-float(line[-1]) / float(yearlist[-1]) for k in range(yearlist[-1])]
+            cashflow = []
             cashflow.append(float(line[4]))
             irrlist.append(numpy.irr(cashflow))
 fig, ax = plt.subplots()
@@ -21,9 +21,10 @@ with open("real.csv") as f:
     for i, line in enumerate(csvf):
         if i > 0:
             ryearlist.append(int(line[0]))
-            rcashflow = [cashflow[0] for k in range(ryearlist[-1])]
+            rcashflow = []
             rcashflow.append(float(line[1]) + float(line[2]))
             rirrlist.append(numpy.irr(rcashflow))
 
 ax.plot(ryearlist, rirrlist, label="Ex Post")
+plot.legend()
 plt.show()
